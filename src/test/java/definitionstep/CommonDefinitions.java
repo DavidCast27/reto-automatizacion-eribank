@@ -20,31 +20,31 @@ public class CommonDefinitions {
 
 	@When("^Me autentico en la App$")
 	public void meAutenticoEnLaApp() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
+		commonSteps.autenticarApp();
 
 	}
 
 	@Then("^Verifico el resultado obtenido de la autenticacion$")
 	public void verificoElResultadoObtenidoDeLaAutenticacion() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
+		commonSteps.verificarAutenticacion();
 
 	}
 
 	@When("^Seleccion hacer un pago$")
 	public void seleccionHacerUnPago() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
+		commonSteps.seleccionarPago();
 
 	}
 
 	@When("^Ingreso informacion del pago$")
 	public void ingresoInformacionDelPago() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
+		commonSteps.ingresarPago();
 
 	}
 
 	@When("^Confirmo el pago$")
 	public void confirmoElPago() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
+		commonSteps.confirmarPago();
 
 	}
 

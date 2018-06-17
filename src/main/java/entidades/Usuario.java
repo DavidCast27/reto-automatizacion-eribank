@@ -20,7 +20,6 @@ public class Usuario implements Serializable {
 	private String telefono;
 	private String nombre;
 	private String pais;
-	private String valorATransferir;
 
 	private Transaccion transaccionDTO;
 
@@ -69,14 +68,6 @@ public class Usuario implements Serializable {
 		this.pais = pais;
 	}
 
-	public String getValorATransferir() {
-		return valorATransferir;
-	}
-
-	public void setValorATransferir(String valorATransferir) {
-		this.valorATransferir = valorATransferir;
-	}
-
 	public Transaccion getTransaccionDTO() {
 		return transaccionDTO;
 	}
@@ -84,6 +75,5 @@ public class Usuario implements Serializable {
 	public void setTransaccionDTO(Transaccion transaccionDTO) {
 		this.transaccionDTO = transaccionDTO;
 	}
-
 
 }

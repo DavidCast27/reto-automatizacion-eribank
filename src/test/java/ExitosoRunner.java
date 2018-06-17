@@ -9,7 +9,7 @@ import cucumber.api.SnippetType;
 import util.BeforeSuite;
 import util.DataToFeature;
 
-@CucumberOptions(features = "src/test/resources/features/eribankExito.feature", tags = "@TestCase1", snippets = SnippetType.CAMELCASE, plugin = {
+@CucumberOptions(features = "src/test/resources/features/eribankExitoso.feature", snippets = SnippetType.CAMELCASE, plugin = {
 		"json:target/cucumber_json/cucumber.json" })
 
 @RunWith(RunnerPersonalizado.class)

@@ -7,7 +7,7 @@ import entidades.Usuario;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 
-public class Steps {
+public class CommonSteps {
 	
 	@Step
 	public static void crearEntidades(List<String> data) {

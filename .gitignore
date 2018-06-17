@@ -47,7 +47,3 @@ nbactions.xml
 
 # End of https://www.gitignore.io/api/java,maven,netbeans
 /nbproject/
-
-/serenity.properties
-
-/APP.properties

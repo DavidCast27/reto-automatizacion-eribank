@@ -15,27 +15,25 @@ public class HacerPagoPage extends MobilePageObject {
 
 	@AndroidFindBy(id = "nameTextField")
 	private WebElement nameTextField;
-	
+
 	@AndroidFindBy(id = "countryTextField")
 	private WebElement countryTextField;
 
 	@AndroidFindBy(id = "sendPaymentButton")
 	private WebElement sendPaymentButton;
-	
+
 	@AndroidFindBy(id = "cancelButton")
 	private WebElement cancelButton;
-	
-	@AndroidFindBy(id = "amount")
-	private WebElement amount;
 
+	@AndroidFindBy(id = "amountTextField")
+	private WebElement amountTextField;
 
 	private FuncionesComunes funcionesComunes = new FuncionesComunes(getDriver());
-	
+
 	public HacerPagoPage(WebDriver driver) {
 		super(driver);
 	}
-	
-	
+
 	public boolean sendKeyPhone(Usuario userDTO) {
 		try {
 			String strTelefono = userDTO.getTelefono();
@@ -46,11 +44,22 @@ public class HacerPagoPage extends MobilePageObject {
 			return false;
 		}
 	}
-	
+
 	public boolean sendKeyName(Usuario userDTO) {
 		try {
 			String strNombre = userDTO.getNombre();
-			phoneTextField.sendKeys(strNombre);
+			nameTextField.sendKeys(strNombre);
+			funcionesComunes.hideKeyboard();
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	public boolean sendKeyAmount(Usuario userDTO) {
+		try {
+			String strValor = userDTO.getTransaccionDTO().getMontoTransferir();
+			amountTextField.sendKeys(strValor);
 			funcionesComunes.hideKeyboard();
 			return true;
 		} catch (Exception e) {
@@ -61,14 +70,14 @@ public class HacerPagoPage extends MobilePageObject {
 	public boolean sendKeyCountry(Usuario userDTO) {
 		try {
 			String strPais = userDTO.getPais();
-			phoneTextField.sendKeys(strPais);
+			countryTextField.sendKeys(strPais);
 			funcionesComunes.hideKeyboard();
 			return true;
 		} catch (Exception e) {
 			return false;
 		}
 	}
-	
+
 	public boolean clickSendPayment() {
 		try {
 			sendPaymentButton.click();
@@ -77,7 +86,7 @@ public class HacerPagoPage extends MobilePageObject {
 			return false;
 		}
 	}
-	
+
 	public boolean clickCancel() {
 		try {
 			cancelButton.click();
@@ -86,12 +95,5 @@ public class HacerPagoPage extends MobilePageObject {
 			return false;
 		}
 	}
-	
-	public boolean slideAmount() {
-		//TODO: FALTA HACER EL SLIDE
-		return false;
-	}
-	
-	
 
 }

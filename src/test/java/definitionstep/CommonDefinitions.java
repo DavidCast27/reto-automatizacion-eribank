@@ -23,11 +23,10 @@ public class CommonDefinitions {
 		commonSteps.autenticarApp();
 
 	}
-
-	@Then("^Verifico el resultado obtenido de la autenticacion$")
-	public void verificoElResultadoObtenidoDeLaAutenticacion() throws Throwable {
-		commonSteps.verificarAutenticacion();
-
+	
+	@Then("^Verifico Autenticacion$")
+	public void verificoAutenticacion() throws Throwable {
+		commonSteps.verificoAutenticacion();
 	}
 
 	@When("^Seleccion hacer un pago$")
@@ -50,8 +49,13 @@ public class CommonDefinitions {
 
 	@Then("^Verifico el que el pago se realizara$")
 	public void verificoElQueElPagoSeRealizara() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
+		commonSteps.verificoPago();
 
+	}
+	
+	@Then("^Cerrar Sesion$")
+	public void cerrarSesion() throws Throwable {
+		commonSteps.cerrarSesion();
 	}
 
 }

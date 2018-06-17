@@ -11,9 +11,10 @@ import pages.*;
 
 public class CommonSteps {
 	InicioSesionPage inicioSesion;
-	ElegirPagoPage elegirPago;
+	MenuPage menu;
 	HacerPagoPage hacerPago;
 	ConfirmarPagoPage confirmarPago;
+	ErrorAutenticacionPage errorAutenticacion;
 
 	@Step
 	public static void crearEntidades(List<String> data) {
@@ -21,21 +22,13 @@ public class CommonSteps {
 		Usuario userDTO = new Usuario();
 
 		userDTO.getTransaccionDTO().setId(data.get(0));
-
-		// userDTO.setNumeroDocumento(data.get(5));
-		// userDTO.setTipoDocumento(data.get(6));
-		// userDTO.setUsuario(data.get(7));
-		// userDTO.setClave(data.get(8));
-		// userDTO.setSegundaClave(data.get(9));
-		// userDTO.setPregunta1(data.get(10));
-		// userDTO.setPregunta2(data.get(11));
-		// userDTO.getTransaccionDTO().setOrientacion(data.get(12));
-		// userDTO.getTransaccionDTO().setCodigoError(data.get(13));
-		// userDTO.getTransaccionDTO().setCodigoTransaccion(data.get(14));
-		// userDTO.getTransaccionDTO().setResultadoEsperado(data.get(15));
-		// userDTO.getTransaccionDTO().setTipoTransaccion(data.get(16));
-		// userDTO.getTransaccionDTO().setCodigoOperacion(data.get(17));
-
+		userDTO.setUsuario(data.get(1));
+		userDTO.setClave(data.get(2));
+		userDTO.setTelefono(data.get(3));
+		userDTO.setNombre(data.get(4));
+		userDTO.setPais(data.get(5));
+		userDTO.getTransaccionDTO().setOrientacion(data.get(6));
+		userDTO.getTransaccionDTO().setMontoTransferir(data.get(7));
 		Serenity.setSessionVariable("UserDTO").to(userDTO);
 
 	}
@@ -55,32 +48,69 @@ public class CommonSteps {
 	}
 
 	@Step
-	public void verificarAutenticacion() throws InterruptedException {
-		boolean result;
-		// TODO: falta mirar como hacer la verificacion
-		// assertTrue("Verificar Autenticacion", result);
-	}
-
-	@Step
 	public void seleccionarPago() {
-		elegirPago.clickMakePayment();		
+		boolean result = menu.clickMakePayment();
+		assertTrue("Dar click a seleccionar pago", result);
 	}
 
 	@Step
-	public void ingresarPago() {
+	public void ingresarPago() throws InterruptedException {
+		boolean result = false;
 		Usuario userDTO = Serenity.sessionVariableCalled("UserDTO");
-		hacerPago.sendKeyPhone(userDTO);
-		hacerPago.sendKeyName(userDTO);
-		hacerPago.sendKeyCountry(userDTO);
-		//TODO: agregar la barra deslizante;
-		hacerPago.clickSendPayment();
-		
+		boolean resultPhone = hacerPago.sendKeyPhone(userDTO);
+		Thread.sleep(1000);
+		boolean resultName = hacerPago.sendKeyName(userDTO);
+		Thread.sleep(1000);
+		boolean resultAmount = hacerPago.sendKeyAmount(userDTO);
+		Thread.sleep(1000);
+		boolean resultCountry = hacerPago.sendKeyCountry(userDTO);
+		Thread.sleep(1000);
+
+		boolean resultSend = hacerPago.clickSendPayment();
+		result = resultPhone && resultName && resultAmount && resultCountry && resultSend;
+		assertTrue("Ingresar informacion del apgo", result);
 	}
 
 	@Step
 	public void confirmarPago() {
-		confirmarPago.clickYes();
-		
+		boolean result = confirmarPago.clickYes();
+		assertTrue("Dar click Confirmar Pago", result);
+	}
+
+	@Step
+	public void verificoAutenticacion() {
+		Usuario userDTO = Serenity.sessionVariableCalled("UserDTO");
+		String strOrientacion = userDTO.getTransaccionDTO().getOrientacion();
+		boolean resultVerificar = menu.verificarPagina();
+		boolean result = false;
+		if ((strOrientacion.equalsIgnoreCase("ACIERTO") && resultVerificar)
+				|| (strOrientacion.equalsIgnoreCase("ERROR") && !resultVerificar)) {
+			result = true;
+		}
+		if (!resultVerificar) {
+			errorAutenticacion.clickCancel();
+		}
+
+		assertTrue("Verificar Autenticacion", result);
+	}
+
+	@Step
+	public void verificoPago() {
+		Usuario userDTO = Serenity.sessionVariableCalled("UserDTO");
+		String strOrientacion = userDTO.getTransaccionDTO().getOrientacion();
+		boolean resultVerificar = menu.verificarPagina();
+		boolean result = false;
+		if ((strOrientacion.equalsIgnoreCase("ACIERTO") && resultVerificar)) {
+			result = true;
+		}
+
+		assertTrue("Verificar Pago", result);
+	}
+
+	@Step
+	public void cerrarSesion() {
+		boolean result = menu.clickLogout();
+		assertTrue("Cerrar sesion", result);
 	}
 
 }

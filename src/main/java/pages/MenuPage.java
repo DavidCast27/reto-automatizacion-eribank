@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import util.MobilePageObject;
 
-public class ElegirPagoPage extends MobilePageObject {
+public class MenuPage extends MobilePageObject {
 
 	@AndroidFindBy(id = "makePaymentButton")
 	private WebElement makePaymentButton;
@@ -14,11 +14,10 @@ public class ElegirPagoPage extends MobilePageObject {
 	@AndroidFindBy(id = "logoutButton")
 	private WebElement logoutButton;
 
-
-	public ElegirPagoPage(WebDriver driver) {
+	public MenuPage(WebDriver driver) {
 		super(driver);
 	}
-	
+
 	public boolean clickMakePayment() {
 		try {
 			makePaymentButton.click();
@@ -27,11 +26,19 @@ public class ElegirPagoPage extends MobilePageObject {
 			return false;
 		}
 	}
-	
+
 	public boolean clickLogout() {
 		try {
-			makePaymentButton.click();
+			logoutButton.click();
 			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	public boolean verificarPagina() {
+		try {
+			return makePaymentButton.isDisplayed();
 		} catch (Exception e) {
 			return false;
 		}

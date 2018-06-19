@@ -1,18 +1,18 @@
-## Introduccion 
+# Introduccion 
 Esta es la automatizacion de la APP Eribank, para la plataforma Android, desarrollada bajo el patro page object model, utilizando las herramnientas de Appium, Cucumber y Serenity BDD.
 
 Se automatizaron los procesos de autenticacion y de pagos de la APP. Se identica un caso exitoso y uno alterno, el primero cuando se puede autenticar y hacer el pago correctamente, el segundo cuando las credenciales de la autenticacion no son correctas y no permite la autenticacion.
  
 
-## Getting Started
+# Getting Started
 
-# Pre-requisitos
+## Pre-requisitos
 
--[Appium Desktop](http://appium.io/)
--Dispositivo Android, sea virtual o fisico
--Eclipse IDE
+- [Appium Desktop](http://appium.io/)
+- Dispositivo Android, sea virtual o fisico
+- Eclipse IDE
 	
-# Proceso de Instalacion
+## Proceso de Instalacion
 
 1. Clone el proyecto: https://github.com/DavidCast27/reto-automatizacion-eribank.git.
 2. Importar el proyecto como maven project.

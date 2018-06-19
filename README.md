@@ -1,20 +1,27 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+## Introduccion 
+Esta es la automatizacion de la APP Eribank, para la plataforma Android, desarrollada bajo el patro page object model, utilizando las herramnientas de Appium, Cucumber y Serenity BDD.
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+Se automatizaron los procesos de autenticacion y de pagos de la APP. Se identica un caso exitoso y uno alterno, el primero cuando se puede autenticar y hacer el pago correctamente, el segundo cuando las credenciales de la autenticacion no son correctas y no permite la autenticacion.
+ 
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+## Getting Started
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+# Pre-requisitos
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://www.visualstudio.com/en-us/docs/git/create-a-readme). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+-[Appium Desktop](http://appium.io/)
+-Dispositivo Android, sea virtual o fisico
+-Eclipse IDE
+	
+# Proceso de Instalacion
+
+1. Clone el proyecto: https://github.com/DavidCast27/reto-automatizacion-eribank.git.
+2. Importar el proyecto como maven project.
+3. Instalar en el dispositivo Android el .apk  que se encuentra en la ruta `src/test/resources/App`.
+4. Cambiar en el `serenity.properties`  
+	- `appium.app` por la ruta estatica donde este su apk.
+	- `appium.hub` por la ip con la que arranque su appium desktop.
+	- `appium.deviceName` por el nombre que tenga su dispositivo, esto se consigue ejecutando el siguiente comando por su CLI favorito.
+
+```sh
+	$ adb devices
+```

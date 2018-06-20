@@ -29,6 +29,10 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
  *
  */
 public class DataToFeature {
+	
+	private DataToFeature () {
+		
+	}
 
 	/**
 	 * Ingresa los datos obtenidos de un excel al archivo .feature del cual se está
@@ -46,7 +50,7 @@ public class DataToFeature {
 	private static List<String> setExcelDataToFeature(File featureFile)
 
 			throws InvalidFormatException, IOException {
-		List<String> fileData = new ArrayList<String>();
+		List<String> fileData = new ArrayList<>();
 		try (BufferedReader buffReader = new BufferedReader(
 				new InputStreamReader(new BufferedInputStream(new FileInputStream(featureFile)), "UTF-8"))) {
 			String data;
@@ -64,8 +68,8 @@ public class DataToFeature {
 				}
 
 				if (data.trim().contains("##@externaldata")) {
-					excelFilePath = data.substring(StringUtils.ordinalIndexOf(data, "@", 2) + 1, data.lastIndexOf("@"));
-					sheetName = data.substring(data.lastIndexOf("@") + 1, data.length());
+					excelFilePath = data.substring(StringUtils.ordinalIndexOf(data, "@", 2) + 1, data.lastIndexOf('@'));
+					sheetName = data.substring(data.lastIndexOf('@') + 1, data.length());
 					foundHashTag = true;
 					fileData.add(data);
 				}
@@ -76,7 +80,6 @@ public class DataToFeature {
 						for (Entry<String, String> mapData : excelData.get(rowNumber).entrySet()) {
 							cellData = cellData + "|" + mapData.getValue();
 						}
-						// cellData = cellData.substring(1, cellData.length());
 						cellData += "|";
 						fileData.add(cellData);
 					}
@@ -111,7 +114,7 @@ public class DataToFeature {
 	 * @return
 	 */
 	private static List<File> listOfFeatureFiles(File folder) {
-		List<File> featureFiles = new ArrayList<File>();
+		List<File> featureFiles = new ArrayList<>();
 		for (File fileEntry : folder.listFiles()) {
 			if (fileEntry.isDirectory()) {
 				featureFiles.addAll(listOfFeatureFiles(fileEntry));

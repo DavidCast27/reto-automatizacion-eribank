@@ -22,7 +22,7 @@ public class EribankSteps {
 		Usuario userDTO = new Usuario();
 
 		userDTO.getTransaccionDTO().setId(data.get(0));
-		userDTO.setUsuario(data.get(1));
+		userDTO.setUser(data.get(1));
 		userDTO.setClave(data.get(2));
 		userDTO.setTelefono(data.get(3));
 		userDTO.setNombre(data.get(4));
@@ -37,11 +37,8 @@ public class EribankSteps {
 	public void autenticarApp() throws InterruptedException {
 		boolean result;
 		Usuario userDTO = Serenity.sessionVariableCalled("UserDTO");
-		Thread.sleep(1000);
 		boolean resultUser = inicioSesion.sendKeyUser(userDTO);
-		Thread.sleep(1000);
 		boolean resultPass = inicioSesion.sendKeyPass(userDTO);
-		Thread.sleep(1000);
 		inicioSesion.clickLogin();
 		result = resultUser && resultPass;
 		assertTrue("Ingreso Usuario y clave", result);
@@ -58,13 +55,9 @@ public class EribankSteps {
 		boolean result = false;
 		Usuario userDTO = Serenity.sessionVariableCalled("UserDTO");
 		boolean resultPhone = hacerPago.sendKeyPhone(userDTO);
-		Thread.sleep(1000);
 		boolean resultName = hacerPago.sendKeyName(userDTO);
-		Thread.sleep(1000);
 		boolean resultAmount = hacerPago.sendKeyAmount(userDTO);
-		Thread.sleep(1000);
 		boolean resultCountry = hacerPago.sendKeyCountry(userDTO);
-		Thread.sleep(1000);
 
 		boolean resultSend = hacerPago.clickSendPayment();
 		result = resultPhone && resultName && resultAmount && resultCountry && resultSend;

@@ -1,14 +1,15 @@
 package entidades;
 
-public class Transaccion {
+import java.io.Serializable;
+
+public class Transaccion implements Serializable{
+	
+	private static final long serialVersionUID = 1905122041950251207L;
 
 	private String orientacion;
 	private String id;
 	private String montoAntes;
 	private String montoTransferir;
-
-	public Transaccion() {
-	}
 
 	public String getOrientacion() {
 		return orientacion;

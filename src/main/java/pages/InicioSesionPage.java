@@ -28,7 +28,7 @@ public class InicioSesionPage extends MobilePageObject {
 	public boolean sendKeyUser(Usuario userDTO) {
 
 		try {
-			String strUsuario = userDTO.getUsuario();
+			String strUsuario = userDTO.getUser();
 			usernameTextField.sendKeys(strUsuario);
 			funcionesComunes.hideKeyboard();
 			return true;

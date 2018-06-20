@@ -15,7 +15,7 @@ public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 4632430914889241426L;
 
-	private String usuario;
+	private String user;
 	private String clave;
 	private String telefono;
 	private String nombre;
@@ -28,12 +28,12 @@ public class Usuario implements Serializable {
 
 	}
 
-	public String getUsuario() {
-		return usuario;
+	public String getUser() {
+		return user;
 	}
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setUser(String usuario) {
+		this.user = usuario;
 	}
 
 	public String getClave() {

@@ -21,6 +21,7 @@ Feature: APP eribank
       ##@externaldata@./src/test/resources/DataDriven/dataDrivenEriBank.xlsx@Datos
       |1|company|company|1234567890 |NENE|USA|acierto|1000|
 
+
   @TestCase2
   Scenario Outline: Hacer una autenticacion fallida
     Given Cargo los Datos de la transaccion

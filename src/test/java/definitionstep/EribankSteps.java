@@ -9,7 +9,7 @@ import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 import pages.*;
 
-public class CommonSteps {
+public class EribankSteps {
 	InicioSesionPage inicioSesion;
 	MenuPage menu;
 	HacerPagoPage hacerPago;

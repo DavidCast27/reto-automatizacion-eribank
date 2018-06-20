@@ -7,14 +7,14 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
 
-public class CommonDefinitions {
+public class EribankDefinitions {
 
 	@Steps
-	CommonSteps commonSteps;
+	EribankSteps commonSteps;
 
 	@Given("^Cargo los Datos de la transaccion$")
 	public void cargoLosDatosDeLaTransaccion(List<String> data) throws Throwable {
-		CommonSteps.crearEntidades(data);
+		EribankSteps.crearEntidades(data);
 
 	}
 

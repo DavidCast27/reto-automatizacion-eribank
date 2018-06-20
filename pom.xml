@@ -26,16 +26,6 @@
 			<name>bintray</name>
 			<url>http://dl.bintray.com/serenity/maven</url>
 		</repository>
-		<!-- 
-		<repository>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-			<id>central</id>
-			<name>bintray</name>
-			<url>http://artifactory.bancolombia.corp/maven-bancolombia</url>
-		</repository>
-		 -->
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
@@ -43,16 +33,6 @@
 			<name>bintray-plugins</name>
 			<url>http://dl.bintray.com/serenity/maven</url>
 		</pluginRepository>
-		<!-- 
-		<pluginRepository>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-			<id>central</id>
-			<name>bintray-plugins</name>
-			<url>http://artifactory.bancolombia.corp/maven-bancolombia</url>
-		</pluginRepository>
-		 -->
 	</pluginRepositories>
 	
 
@@ -107,7 +87,6 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest-all -->
 		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-all</artifactId>
@@ -129,6 +108,15 @@
 
 	</dependencies>
 	<build>
+	 <pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>3.4.0.905</version>
+      </plugin>
+    </plugins>
+  </pluginManagement>
 		<plugins>
 
 			<plugin> <!-- ejecución el comando verify y genere evidencias -->

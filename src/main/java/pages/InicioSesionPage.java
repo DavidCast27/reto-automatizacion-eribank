@@ -25,37 +25,52 @@ public class InicioSesionPage extends MobilePageObject {
 		super(driver);
 	}
 
-	public boolean sendKeyUser(Usuario userDTO) {
-
-		try {
-			String strUsuario = userDTO.getUser();
-			usernameTextField.sendKeys(strUsuario);
-			funcionesComunes.hideKeyboard();
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
+	public WebElement getUsernameTextField() {
+		return usernameTextField;
 	}
 
-	public boolean sendKeyPass(Usuario userDTO) {
-
-		try {
-			String strPass = userDTO.getClave();
-			passwordTextField.sendKeys(strPass);
-			funcionesComunes.hideKeyboard();
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
+	public WebElement getPasswordTextField() {
+		return passwordTextField;
 	}
 
-	public boolean clickLogin() {
-		try {
-			loginButton.click();
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
+	public WebElement getLoginButton() {
+		return loginButton;
 	}
+	
+	
+	
+
+//	public boolean sendKeyUser(Usuario userDTO) {
+//
+//		try {
+//			String strUsuario = userDTO.getUser();
+//			usernameTextField.sendKeys(strUsuario);
+//			funcionesComunes.hideKeyboard();
+//			return true;
+//		} catch (Exception e) {
+//			return false;
+//		}
+//	}
+//
+//	public boolean sendKeyPass(Usuario userDTO) {
+//
+//		try {
+//			String strPass = userDTO.getClave();
+//			passwordTextField.sendKeys(strPass);
+//			funcionesComunes.hideKeyboard();
+//			return true;
+//		} catch (Exception e) {
+//			return false;
+//		}
+//	}
+//
+//	public boolean clickLogin() {
+//		try {
+//			loginButton.click();
+//			return true;
+//		} catch (Exception e) {
+//			return false;
+//		}
+//	}
 
 }

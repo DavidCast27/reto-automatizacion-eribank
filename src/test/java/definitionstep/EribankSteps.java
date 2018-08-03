@@ -4,10 +4,13 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
+import org.openqa.selenium.interactions.ClickAction;
+
 import entidades.Usuario;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 import pages.*;
+import util.Actions;
 
 public class EribankSteps {
 	InicioSesionPage inicioSesion;
@@ -37,9 +40,11 @@ public class EribankSteps {
 	public void autenticarApp() throws InterruptedException {
 		boolean result;
 		Usuario userDTO = Serenity.sessionVariableCalled("UserDTO");
-		boolean resultUser = inicioSesion.sendKeyUser(userDTO);
-		boolean resultPass = inicioSesion.sendKeyPass(userDTO);
-		inicioSesion.clickLogin();
+		
+		boolean resultUser = Actions.sendKeyAction(inicioSesion.getUsernameTextField(), userDTO.getUser()); 	
+		
+		boolean resultPass = Actions.sendKeyAction(inicioSesion.getPasswordTextField(),userDTO.getClave());
+		boolean resultClickContinuar = Actions.clickAction(inicioSesion.getLoginButton());
 		result = resultUser && resultPass;
 		assertTrue("Ingreso Usuario y clave", result);
 	}

@@ -19,7 +19,7 @@ Feature: APP eribank
     Examples: 
       | ID | usuario | clave   | telefono   | nombre | pais | orientacion | monto |
       ##@externaldata@./src/test/resources/DataDriven/dataDrivenEriBank.xlsx@Datos
-      |1|company|company|1234567890 |NENE|USA|acierto|1000|
+      |1|company|company|1234567890 |NENE|Colombia|acierto|1000|
 
 
   @TestCase2

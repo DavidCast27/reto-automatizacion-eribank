@@ -7,11 +7,13 @@ package entidades;
 
 import java.io.Serializable;
 
+import Interfaces.IUsuario;
+
 /**
  *
  * @author jesmuner
  */
-public class Usuario implements Serializable {
+public class Usuario implements IUsuario {
 
 	private static final long serialVersionUID = 4632430914889241426L;
 

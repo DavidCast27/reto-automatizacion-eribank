@@ -19,8 +19,6 @@ public class InicioSesionPage extends MobilePageObject {
 	@AndroidFindBy(id = "loginButton")
 	private WebElement loginButton;
 
-	private FuncionesComunes funcionesComunes = new FuncionesComunes(getDriver());
-
 	public InicioSesionPage(WebDriver driver) {
 		super(driver);
 	}
@@ -36,41 +34,6 @@ public class InicioSesionPage extends MobilePageObject {
 	public WebElement getLoginButton() {
 		return loginButton;
 	}
-	
-	
-	
 
-//	public boolean sendKeyUser(Usuario userDTO) {
-//
-//		try {
-//			String strUsuario = userDTO.getUser();
-//			usernameTextField.sendKeys(strUsuario);
-//			funcionesComunes.hideKeyboard();
-//			return true;
-//		} catch (Exception e) {
-//			return false;
-//		}
-//	}
-//
-//	public boolean sendKeyPass(Usuario userDTO) {
-//
-//		try {
-//			String strPass = userDTO.getClave();
-//			passwordTextField.sendKeys(strPass);
-//			funcionesComunes.hideKeyboard();
-//			return true;
-//		} catch (Exception e) {
-//			return false;
-//		}
-//	}
-//
-//	public boolean clickLogin() {
-//		try {
-//			loginButton.click();
-//			return true;
-//		} catch (Exception e) {
-//			return false;
-//		}
-//	}
 
 }

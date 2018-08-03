@@ -11,7 +11,7 @@ import Interfaces.IUsuario;
 
 /**
  *
- * @author jesmuner
+ * @author david.c.gonzalez
  */
 public class Usuario implements IUsuario {
 

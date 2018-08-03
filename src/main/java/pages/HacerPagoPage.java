@@ -34,66 +34,32 @@ public class HacerPagoPage extends MobilePageObject {
 		super(driver);
 	}
 
-	public boolean sendKeyPhone(Usuario userDTO) {
-		try {
-			String strTelefono = userDTO.getTelefono();
-			phoneTextField.sendKeys(strTelefono);
-			funcionesComunes.hideKeyboard();
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
+	public WebElement getPhoneTextField() {
+		return phoneTextField;
 	}
 
-	public boolean sendKeyName(Usuario userDTO) {
-		try {
-			String strNombre = userDTO.getNombre();
-			nameTextField.sendKeys(strNombre);
-			funcionesComunes.hideKeyboard();
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
+	public WebElement getNameTextField() {
+		return nameTextField;
 	}
 
-	public boolean sendKeyAmount(Usuario userDTO) {
-		try {
-			String strValor = userDTO.getTransaccionDTO().getMontoTransferir();
-			amountTextField.sendKeys(strValor);
-			funcionesComunes.hideKeyboard();
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
-	}
-	
-	public boolean sendKeyCountry(Usuario userDTO) {
-		try {
-			String strPais = userDTO.getPais();
-			countryTextField.sendKeys(strPais);
-			funcionesComunes.hideKeyboard();
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
+	public WebElement getCountryTextField() {
+		return countryTextField;
 	}
 
-	public boolean clickSendPayment() {
-		try {
-			sendPaymentButton.click();
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
+	public WebElement getSendPaymentButton() {
+		return sendPaymentButton;
 	}
 
-	public boolean clickCancel() {
-		try {
-			cancelButton.click();
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
+	public WebElement getCancelButton() {
+		return cancelButton;
+	}
+
+	public WebElement getAmountTextField() {
+		return amountTextField;
+	}
+
+	public FuncionesComunes getFuncionesComunes() {
+		return funcionesComunes;
 	}
 
 }

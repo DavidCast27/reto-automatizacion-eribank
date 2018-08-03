@@ -18,30 +18,12 @@ public class MenuPage extends MobilePageObject {
 		super(driver);
 	}
 
-	public boolean clickMakePayment() {
-		try {
-			makePaymentButton.click();
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
+	public WebElement getMakePaymentButton() {
+		return makePaymentButton;
 	}
 
-	public boolean clickLogout() {
-		try {
-			logoutButton.click();
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
-	}
-
-	public boolean verificarPagina() {
-		try {
-			return makePaymentButton.isDisplayed();
-		} catch (Exception e) {
-			return false;
-		}
+	public WebElement getLogoutButton() {
+		return logoutButton;
 	}
 
 }

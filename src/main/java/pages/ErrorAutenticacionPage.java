@@ -15,13 +15,8 @@ public class ErrorAutenticacionPage extends MobilePageObject {
 		super(driver);
 	}
 
-	public boolean clickCancel() {
-		try {
-			cancelButton.click();
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
+	public WebElement getCancelButton() {
+		return cancelButton;
 	}
 
 }

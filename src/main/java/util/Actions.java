@@ -21,5 +21,13 @@ public class Actions {
 			return false;
 		}
 	}
+	
+	public static boolean verifyPage(WebElement element) {
+		try {
+			return element.isDisplayed();
+		} catch (Exception e) {
+			return false;
+		}
+	}
 
 }

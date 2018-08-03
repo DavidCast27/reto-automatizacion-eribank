@@ -14,27 +14,16 @@ public class ConfirmarPagoPage extends MobilePageObject {
 	@AndroidFindBy(id = "android:id/button2")
 	private WebElement noButton;
 
-
 	public ConfirmarPagoPage(WebDriver driver) {
 		super(driver);
 	}
-	
-	public boolean clickYes() {
-		try {
-			yesButton.click();
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
+
+	public WebElement getYesButton() {
+		return yesButton;
 	}
-	
-	public boolean clickNo() {
-		try {
-			noButton.click();
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
+
+	public WebElement getNoButton() {
+		return noButton;
 	}
 
 }

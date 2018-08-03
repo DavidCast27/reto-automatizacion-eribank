@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.openqa.selenium.interactions.ClickAction;
 
+import cucumber.api.java.en_old.Ac;
 import entidades.Usuario;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
@@ -45,13 +46,14 @@ public class EribankSteps {
 		
 		boolean resultPass = Actions.sendKeyAction(inicioSesion.getPasswordTextField(),userDTO.getClave());
 		boolean resultClickContinuar = Actions.clickAction(inicioSesion.getLoginButton());
-		result = resultUser && resultPass;
+		result = resultUser && resultPass && resultClickContinuar;
 		assertTrue("Ingreso Usuario y clave", result);
 	}
 
 	@Step
 	public void seleccionarPago() {
-		boolean result = menu.clickMakePayment();
+		
+		boolean result = Actions.clickAction(menu.getMakePaymentButton());
 		assertTrue("Dar click a seleccionar pago", result);
 	}
 
@@ -59,19 +61,21 @@ public class EribankSteps {
 	public void ingresarPago() throws InterruptedException {
 		boolean result = false;
 		Usuario userDTO = Serenity.sessionVariableCalled("UserDTO");
-		boolean resultPhone = hacerPago.sendKeyPhone(userDTO);
-		boolean resultName = hacerPago.sendKeyName(userDTO);
-		boolean resultAmount = hacerPago.sendKeyAmount(userDTO);
-		boolean resultCountry = hacerPago.sendKeyCountry(userDTO);
+		
+		boolean resultPhone = Actions.sendKeyAction(hacerPago.getPhoneTextField(), userDTO.getTelefono());
+		boolean resultName = Actions.sendKeyAction(hacerPago.getNameTextField(), userDTO.getNombre());
+		boolean resultAmount = Actions.sendKeyAction(hacerPago.getAmountTextField(), userDTO.getTransaccionDTO().getMontoTransferir());
+		boolean resultCountry = Actions.sendKeyAction(hacerPago.getCountryTextField(), userDTO.getPais());
 
-		boolean resultSend = hacerPago.clickSendPayment();
+		boolean resultSend = Actions.clickAction(hacerPago.getSendPaymentButton());
 		result = resultPhone && resultName && resultAmount && resultCountry && resultSend;
 		assertTrue("Ingresar informacion del apgo", result);
 	}
 
 	@Step
 	public void confirmarPago() {
-		boolean result = confirmarPago.clickYes();
+		
+		boolean result = Actions.clickAction(confirmarPago.getYesButton());
 		assertTrue("Dar click Confirmar Pago", result);
 	}
 
@@ -79,14 +83,14 @@ public class EribankSteps {
 	public void verificoAutenticacion() {
 		Usuario userDTO = Serenity.sessionVariableCalled("UserDTO");
 		String strOrientacion = userDTO.getTransaccionDTO().getOrientacion();
-		boolean resultVerificar = menu.verificarPagina();
+		boolean resultVerificar = Actions.verifyPage(menu.getMakePaymentButton());
 		boolean result = false;
 		if ((strOrientacion.equalsIgnoreCase("ACIERTO") && resultVerificar)
 				|| (strOrientacion.equalsIgnoreCase("ERROR") && !resultVerificar)) {
 			result = true;
 		}
 		if (!resultVerificar) {
-			errorAutenticacion.clickCancel();
+			Actions.clickAction(errorAutenticacion.getCancelButton());
 		}
 
 		assertTrue("Verificar Autenticacion", result);
@@ -96,7 +100,7 @@ public class EribankSteps {
 	public void verificoPago() {
 		Usuario userDTO = Serenity.sessionVariableCalled("UserDTO");
 		String strOrientacion = userDTO.getTransaccionDTO().getOrientacion();
-		boolean resultVerificar = menu.verificarPagina();
+		boolean resultVerificar = Actions.verifyPage(menu.getMakePaymentButton());
 		boolean result = false;
 		if ((strOrientacion.equalsIgnoreCase("ACIERTO") && resultVerificar)) {
 			result = true;
@@ -107,7 +111,7 @@ public class EribankSteps {
 
 	@Step
 	public void cerrarSesion() {
-		boolean result = menu.clickLogout();
+		boolean result = Actions.clickAction(menu.getLogoutButton());
 		assertTrue("Cerrar sesion", result);
 	}
 
